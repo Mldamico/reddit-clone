@@ -62,7 +62,24 @@ export class UserResolver {
       username: options.username,
       password: hashedPassworrd,
     });
-    await em.persistAndFlush(user);
+
+    try {
+      await em.persistAndFlush(user);
+    } catch (err) {
+      if (err.code === '23505') {
+        //|| err.detail.includes('already exists')) {
+        //Duplicate username
+        return {
+          errors: [
+            {
+              field: 'username',
+              message: 'Username already taken',
+            },
+          ],
+        };
+      }
+    }
+
     return { user };
   }
 
