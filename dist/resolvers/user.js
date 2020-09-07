@@ -113,6 +113,7 @@ let UserResolver = class UserResolver {
                     };
                 }
             }
+            console.log(user);
             req.session.userId = user.id;
             return { user };
         });
