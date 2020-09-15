@@ -12,7 +12,6 @@ import redis from 'redis';
 import session from 'express-session';
 import connectRedis from 'connect-redis';
 import cors from 'cors';
-import { sendEmail } from './utils/sendEmail';
 
 const main = async () => {
   const orm = await MikroORM.init(microConfig);
