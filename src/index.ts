@@ -19,7 +19,7 @@ const main = async () => {
   const app = express();
 
   const RedisStore = connectRedis(session);
-  const redis = Redis();
+  const redis = new Redis();
 
   app.use(
     cors({
